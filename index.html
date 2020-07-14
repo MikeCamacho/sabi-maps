@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <div class="floating-panel__buttons">
+        <div class="floating-panel__buttons__button">
+          <figure class="floating-panel__buttons__buttonFigure">
+            <img
+              src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/07/icon01.svg"
+              alt="icon"
+            />
+          </figure>
+          <div class="floating-panel__buttons__buttonTxt">
+            <p>Mostrar TODOS</p>
+            <span>los corredores</span>
+          </div>
+        </div>
+        <div class="floating-panel__buttons__button">
+          <figure class="floating-panel__buttons__buttonFigure">
+            <img
+              src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/07/icon01.svg"
+              alt="icon"
+            />
+          </figure>
+          <div class="floating-panel__buttons__buttonTxt">
+            <p>Mostrar TODOS</p>
+            <span>los corredores</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="floating-panel__options-content">
+        <div id="routeBogBun" class="floating-panel__options-content__option">
+          <p>BOG - BUN</p>
+          <span>Bogotá - Buenaventura</span>
+          <span>Cali (Línea)</span>
+        </div>
+        <div id="routeMedCar" class="floating-panel__options-content__option">
+          <p>MED - CAR</p>
+          <span>Medellin - Cartagena</span>
+          <span>(Cartagena)</span>
+        </div>
+      </div>
+      <div class="option-selects-hidden">
+        <b>Origen:</b>
+        <select id="start">
+          <option value="4.59808, -74.0760439">Bogotá</option>
+          <option value="6.2443382, -75.573553">Medellin</option>
+          <option value="3.4108435, -76.58121271">Cali</option>
+        </select>
+        <b>End: </b>
+        <select id="end">
+          <option value="3.89005264, -77.0737238">Buenaventura</option>
+          <option value="3.4108435, -76.58121271">Cali</option>
+          <option value="11.01184845, -74.80886012">Barranquilla</option>
+          <option value="17.8971458, 7.8971458">Cucuta</option>
+          <option value="4.3120724, -72.0829509">Llanos orientales</option>
+          <option value="10.4195841, -75.5271224">Cartagena</option>
+          <option value="6.2443382, -75.573553">Medellin</option>
+        </select>
+      </div>
+    </div>
+    <div id="map"></div>
+    <script src="js/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZbKGgQzQ1BdcJUuvFvJedx_r9-LjO1ns&callback=initMap"></script>
+  </body>
+</html>
