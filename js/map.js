@@ -1,7 +1,19 @@
 const routeBogBun = document.getElementById('routeBogBun')
 const routeMedCar = document.getElementById('routeMedCar')
+const routeBogBar = document.getElementById('routeBogBar')
+const routeBogMed = document.getElementById('routeBogMed')
+const routeBogCuc = document.getElementById('routeBogCuc')
+const routeCalMed = document.getElementById('routeCalMed')
+const routeBogLln = document.getElementById('routeBogLln')
 var selectOrigin = document.getElementById('start')
 var selectDestination = document.getElementById('end')
+
+const dropDownBtn = document.getElementById('dropDownBtn')
+const dropDownPanel = document.getElementById('dropDownPanel')
+
+dropDownBtn.addEventListener('click', function () {
+  dropDownPanel.classList.add('show')
+})
 
 function initMap() {
   var directionsService = new google.maps.DirectionsService()
@@ -47,6 +59,71 @@ function initMap() {
     )
   }
   routeMedCar.addEventListener('click', onClickHandler1)
+
+  function onClickHandler2() {
+    selectOrigin = selectOrigin.selectedIndex = '4.59808, -74.0760439'
+    selectDestination = selectDestination.selectedIndex =
+      '11.01184845, -74.80886012'
+    calculateAndDisplayRoute(
+      directionsService,
+      directionsRenderer,
+      selectOrigin,
+      selectDestination
+    )
+  }
+  routeBogBar.addEventListener('click', onClickHandler2)
+
+  function onClickHandler3() {
+    selectOrigin = selectOrigin.selectedIndex = '4.59808, -74.0760439'
+    selectDestination = selectDestination.selectedIndex =
+      '6.2443382, -75.573553'
+    calculateAndDisplayRoute(
+      directionsService,
+      directionsRenderer,
+      selectOrigin,
+      selectDestination
+    )
+  }
+  routeBogMed.addEventListener('click', onClickHandler3)
+
+  function onClickHandler4() {
+    selectOrigin = selectOrigin.selectedIndex = '4.59808, -74.0760439'
+    selectDestination = selectDestination.selectedIndex =
+      '7.8971458, -72.5080387'
+    calculateAndDisplayRoute(
+      directionsService,
+      directionsRenderer,
+      selectOrigin,
+      selectDestination
+    )
+  }
+  routeBogCuc.addEventListener('click', onClickHandler4)
+
+  function onClickHandler5() {
+    selectOrigin = selectOrigin.selectedIndex = '3.4108435, -76.58121271'
+    selectDestination = selectDestination.selectedIndex =
+      '6.2443382, -75.573553'
+    calculateAndDisplayRoute(
+      directionsService,
+      directionsRenderer,
+      selectOrigin,
+      selectDestination
+    )
+  }
+  routeCalMed.addEventListener('click', onClickHandler5)
+
+  function onClickHandler6() {
+    selectOrigin = selectOrigin.selectedIndex = '4.59808, -74.0760439'
+    selectDestination = selectDestination.selectedIndex =
+      '4.3120724, -72.0829509'
+    calculateAndDisplayRoute(
+      directionsService,
+      directionsRenderer,
+      selectOrigin,
+      selectDestination
+    )
+  }
+  routeBogLln.addEventListener('click', onClickHandler6)
 }
 
 function calculateAndDisplayRoute(
@@ -58,7 +135,6 @@ function calculateAndDisplayRoute(
   var myLatlng = new google.maps.LatLng(41.149709, -80.182595)
   var origin = selectOrigin
   var destination = selectDestination
-  console.log(selectOrigin)
   directionsService.route(
     {
       origin: {query: origin},
