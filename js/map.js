@@ -12,7 +12,7 @@ const dropDownBtn = document.getElementById('dropDownBtn')
 const dropDownPanel = document.getElementById('dropDownPanel')
 
 dropDownBtn.addEventListener('click', function () {
-  dropDownPanel.classList.add('show')
+  dropDownPanel.classList.toggle('show')
 })
 
 function initMap() {
