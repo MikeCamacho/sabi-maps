@@ -79,7 +79,7 @@ body {
   overflow: hidden;
 }
 .floating-panel__options-content.show {
-  height: 270px;
+  height: auto;
   padding: 10px;
 }
 .floating-panel__options-content__option {

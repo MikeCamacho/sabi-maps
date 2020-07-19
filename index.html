@@ -13,7 +13,8 @@
   <body>
     <div id="floating-panel">
       <div class="floating-panel__buttons">
-        <div id="dropDownBtn" class="floating-panel__buttons__button">
+        <!--BUTTON ROUTES-->
+        <div id="dropDownBtnRoutes" class="floating-panel__buttons__button">
           <figure class="floating-panel__buttons__buttonFigure">
             <img
               src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/07/icon01.svg"
@@ -25,7 +26,8 @@
             <span>los corredores</span>
           </div>
         </div>
-        <div class="floating-panel__buttons__button">
+        <!--BUTTON POINTS-->
+        <div id="dropDownBtnPoints" class="floating-panel__buttons__button">
           <figure class="floating-panel__buttons__buttonFigure">
             <img
               src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/07/icon01.svg"
@@ -34,87 +36,113 @@
           </figure>
           <div class="floating-panel__buttons__buttonTxt">
             <p>Mostrar TODOS</p>
-            <span>los corredores</span>
+            <span>los puntos</span>
           </div>
         </div>
       </div>
 
-      <div id="dropDownPanel" class="floating-panel__options-content">
+      <!--PANEL ROUTES-->
+      <div id="dropDownPanelRoutes" class="floating-panel__options-content">
         <div
-          id="routeBogBun"
           class="floating-panel__options-content__option"
           data-coord-origin="4.59808, -74.0760439"
           data-coord-destinity="3.89005264, -77.0737238"
         >
+          <input id="routeBogBun" type="checkbox" name="routes" value="bog_bun">
           <p>BOG - BUN</p>
           <span>Bogotá - Buenaventura</span>
           <span>Cali (Línea)</span>
         </div>
         <div
-          id="routeMedCar"
           class="floating-panel__options-content__option"
           data-coord-origin="4.59808, -74.0760439"
           data-coord-destinity="3.89005264, -77.0737238"
         >
+          <input id="routeMedCar" type="checkbox" name="routes" value="med_car">
           <p>MED - CAR</p>
           <span>Medellin - Cartagena</span>
           <span>(Cartagena)</span>
         </div>
         <div
-          id="routeBogBar"
           class="floating-panel__options-content__option"
           data-coord-origin="4.59808, -74.0760439"
           data-coord-destinity="3.89005264, -77.0737238"
         >
+          <input id="routeBogBar" type="checkbox" name="routes" value="bog_bar">
           <p>BOG - BAR</p>
           <span>Bogotá - La costa</span>
           <span>(Barranquilla)</span>
         </div>
         <div
-          id="routeBogMed"
           class="floating-panel__options-content__option"
           data-coord-origin="4.59808, -74.0760439"
           data-coord-destinity="3.89005264, -77.0737238"
         >
+          <input id="routeBogMed" type="checkbox" name="routes" value="bog_med">
           <p>BOG - MED</p>
           <span>Bogotá - Medellín</span>
           <span></span>
         </div>
         <div
-          id="routeBogCuc"
           class="floating-panel__options-content__option"
           data-coord-origin="4.59808, -74.0760439"
           data-coord-destinity="3.89005264, -77.0737238"
         >
+          <input id="routeBogCuc" type="checkbox" name="routes" value="bog_cuc">
           <p>BOG - CUC</p>
           <span>Bogotá - Cúcuta</span>
           <span></span>
         </div>
         <div
-          id="routeCalMed"
           class="floating-panel__options-content__option"
           data-coord-origin="4.59808, -74.0760439"
           data-coord-destinity="3.89005264, -77.0737238"
         >
+          <input id="routeCalMed" type="checkbox" name="routes" value="cal_med">
           <p>CAL - MED</p>
           <span>Cali - Medellín</span>
           <span></span>
         </div>
         <div
-          id="routeBogLln"
           class="floating-panel__options-content__option"
           data-coord-origin="4.59808, -74.0760439"
           data-coord-destinity="3.89005264, -77.0737238"
         >
+          <input id="routeBogLln" type="checkbox" name="routes" value="bog_lln">
           <p>BOG - LLN</p>
           <span>Bogotá - Llanos Orientales</span>
           <span>(Yopal)</span>
         </div>
       </div>
+
+
+      <!--PANEL POINTS-->
+      <div id="dropDownPanelPoints" class="floating-panel__options-content">
+        <div
+          id="pointParquedero"
+          class="floating-panel__options-content__option"
+        >
+          <input type="checkbox" name="points" value="parqueadero">
+          <p>PARADERO</p>
+          <span>comidas y bebidas</span>
+          <span></span>
+        </div>
+        <div
+          id="pointMontaña"
+          class="floating-panel__options-content__option"
+        >
+          <input type="checkbox" name="points" value="montaña">
+          <p>MONTAÑA</p>
+          <span>vistas hermosas</span>
+          <span></span>
+        </div>
+      </div>
+
+
       <div class="option-selects-hidden">
         <b>Origen:</b>
         <select id="start">
-          <option value="4.59808, -74.0760439">Bogotá</option>
+          <option value="4.59808, -74.0760439" >Bogotá</option>
           <option value="6.2443382, -75.573553">Medellin</option>
           <option value="3.4108435, -76.58121271">Cali</option>
         </select>

@@ -5,22 +5,48 @@ const routeBogMed = document.getElementById('routeBogMed')
 const routeBogCuc = document.getElementById('routeBogCuc')
 const routeCalMed = document.getElementById('routeCalMed')
 const routeBogLln = document.getElementById('routeBogLln')
-var selectOrigin = document.getElementById('start')
-var selectDestination = document.getElementById('end')
 
-const dropDownBtn = document.getElementById('dropDownBtn')
-const dropDownPanel = document.getElementById('dropDownPanel')
+const pointParqueadero = document.getElementById('pointParquedero')
+const pointMontaña = document.getElementById('pointMontaña')
 
-dropDownBtn.addEventListener('click', function () {
-  dropDownPanel.classList.toggle('show')
+const dropDownBtnRoutes = document.getElementById('dropDownBtnRoutes')
+const dropDownPanelRoutes = document.getElementById('dropDownPanelRoutes')
+
+dropDownBtnRoutes.addEventListener('click', function () {
+  dropDownPanelRoutes.classList.toggle('show')
 })
+
+const dropDownBtnPoints = document.getElementById('dropDownBtnPoints')
+const dropDownPanelPoints = document.getElementById('dropDownPanelPoints')
+
+dropDownBtnPoints.addEventListener('click', function () {
+  dropDownPanelPoints.classList.toggle('show')
+})
+
+const routes = document.getElementsByName('routes')
+const routesCoordinates = {
+  bog_bun: { origin: '4.59808, -74.0760439', destination: '3.89005264, -77.0737238' },
+  med_car: { origin: '6.2443382, -75.573553', destination: '10.4195841, -75.5271224' },
+  bog_bar: { origin: '4.59808, -74.0760439', destination: '11.01184845, -74.80886012' },
+  bog_med: { origin: '4.59808, -74.0760439', destination: '6.2443382, -75.573553' },
+  bog_cuc: { origin: '4.59808, -74.0760439', destination: '7.8971458, -72.5080387' },
+  cal_med: { origin: '3.4108435, -76.58121271', destination: '6.2443382, -75.573553' },
+  bog_lln: { origin: '4.59808, -74.0760439', destination: '4.3120724, -72.0829509' }
+}
+
+const points = document.getElementsByName('points')
+//se puede hacer por grupo de points
+const pointsCoordinates = {
+  parqueadero: '4.959757, -75.090155',
+  montaña: '4.264340, -74.606285'
+}
 
 function initMap() {
   var directionsService = new google.maps.DirectionsService()
   var directionsRenderer = new google.maps.DirectionsRenderer()
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 7,
-    center: {lat: 3.6010754, lng: -72.6167754},
+    center: { lat: 3.6010754, lng: -72.6167754 },
     zoomControl: true,
     mapTypeControl: false,
     streetViewControl: false,
@@ -28,128 +54,78 @@ function initMap() {
   })
   directionsRenderer.setMap(map)
 
-  // function onChangeHandler() {
-  //   calculateAndDisplayRoute(directionsService, directionsRenderer)
-  // }
-  // document.getElementById('start').addEventListener('change', onChangeHandler)
-  // document.getElementById('end').addEventListener('change', onChangeHandler)
+  var rendererBogBun = new google.maps.DirectionsRenderer({ preserveViewport: true })
+  var rendererMedCar = new google.maps.DirectionsRenderer({ preserveViewport: true })
+  var rendererBogBar = new google.maps.DirectionsRenderer({ preserveViewport: true })
+  var rendererBogMed = new google.maps.DirectionsRenderer({ preserveViewport: true })
+  var rendererBogCuc = new google.maps.DirectionsRenderer({ preserveViewport: true })
+  var rendererCalMed = new google.maps.DirectionsRenderer({ preserveViewport: true })
+  var rendererBogLln = new google.maps.DirectionsRenderer({ preserveViewport: true })
 
-  function onClickHandler() {
-    selectOrigin = selectOrigin.selectedIndex = '4.59808, -74.0760439'
-    selectDestination = selectDestination.selectedIndex =
-      '3.89005264, -77.0737238'
-    calculateAndDisplayRoute(
-      directionsService,
-      directionsRenderer,
-      selectOrigin,
-      selectDestination
-    )
+  function selectRoute(route, render) {
+    if (route.checked) {
+      const { origin, destination } = routesCoordinates[route.value]
+
+      var waypoints = selectedWaypoints()
+
+      var request = {
+        origin,
+        destination,
+        waypoints,
+        optimizeWaypoints: true,
+        provideRouteAlternatives: true,
+        travelMode: 'DRIVING'
+      }
+
+      directionsService.route(request, function (response, status) {
+        if (status == 'OK') {
+          render.setMap(map)
+          render.setOptions({ directions: response, suppressPolylines: false, suppressMarkers: false })
+        } else {
+          window.alert('Directions request failed due to ' + status)
+        }
+      })
+    } else {
+      render.setMap(map)
+      render.setOptions({ suppressPolylines: true, suppressMarkers: true })
+    }
   }
-  routeBogBun.addEventListener('click', onClickHandler)
 
-  function onClickHandler1() {
-    selectOrigin = selectOrigin.selectedIndex = '6.2443382, -75.573553'
-    selectDestination = selectDestination.selectedIndex =
-      '10.4195841, -75.5271224'
-    calculateAndDisplayRoute(
-      directionsService,
-      directionsRenderer,
-      selectOrigin,
-      selectDestination
-    )
-  }
-  routeMedCar.addEventListener('click', onClickHandler1)
-
-  function onClickHandler2() {
-    selectOrigin = selectOrigin.selectedIndex = '4.59808, -74.0760439'
-    selectDestination = selectDestination.selectedIndex =
-      '11.01184845, -74.80886012'
-    calculateAndDisplayRoute(
-      directionsService,
-      directionsRenderer,
-      selectOrigin,
-      selectDestination
-    )
-  }
-  routeBogBar.addEventListener('click', onClickHandler2)
-
-  function onClickHandler3() {
-    selectOrigin = selectOrigin.selectedIndex = '4.59808, -74.0760439'
-    selectDestination = selectDestination.selectedIndex =
-      '6.2443382, -75.573553'
-    calculateAndDisplayRoute(
-      directionsService,
-      directionsRenderer,
-      selectOrigin,
-      selectDestination
-    )
-  }
-  routeBogMed.addEventListener('click', onClickHandler3)
-
-  function onClickHandler4() {
-    selectOrigin = selectOrigin.selectedIndex = '4.59808, -74.0760439'
-    selectDestination = selectDestination.selectedIndex =
-      '7.8971458, -72.5080387'
-    calculateAndDisplayRoute(
-      directionsService,
-      directionsRenderer,
-      selectOrigin,
-      selectDestination
-    )
-  }
-  routeBogCuc.addEventListener('click', onClickHandler4)
-
-  function onClickHandler5() {
-    selectOrigin = selectOrigin.selectedIndex = '3.4108435, -76.58121271'
-    selectDestination = selectDestination.selectedIndex =
-      '6.2443382, -75.573553'
-    calculateAndDisplayRoute(
-      directionsService,
-      directionsRenderer,
-      selectOrigin,
-      selectDestination
-    )
-  }
-  routeCalMed.addEventListener('click', onClickHandler5)
-
-  function onClickHandler6() {
-    selectOrigin = selectOrigin.selectedIndex = '4.59808, -74.0760439'
-    selectDestination = selectDestination.selectedIndex =
-      '4.3120724, -72.0829509'
-    calculateAndDisplayRoute(
-      directionsService,
-      directionsRenderer,
-      selectOrigin,
-      selectDestination
-    )
-  }
-  routeBogLln.addEventListener('click', onClickHandler6)
-}
-
-function calculateAndDisplayRoute(
-  directionsService,
-  directionsRenderer,
-  selectOrigin,
-  selectDestination
-) {
-  var myLatlng = new google.maps.LatLng(41.149709, -80.182595)
-  var origin = selectOrigin
-  var destination = selectDestination
-  directionsService.route(
-    {
-      origin: {query: origin},
-      destination: {query: destination},
-      travelMode: 'DRIVING',
-    },
-    function (response, status, map) {
-      if (status === 'OK') {
-        directionsRenderer.setDirections(response)
-        var marker = new google.maps.Marker()
-        marker.setMap(map)
-        marker.setPosition(myLatlng)
-      } else {
-        window.alert('Directions request failed due to ' + status)
+  function selectedWaypoints() {
+    var waypoints = []
+    for (let i = 0; i < points.length; i++) {
+      const point = points[i]
+      if (point.checked) {
+        waypoints.push({
+          location: pointsCoordinates[point.value],
+          stopover: true
+        })
       }
     }
-  )
+    return waypoints
+  }
+
+  routeBogBun.addEventListener('change', () => selectRoute(routeBogBun, rendererBogBun))
+  routeMedCar.addEventListener('change', () => selectRoute(routeMedCar, rendererMedCar))
+  routeBogBar.addEventListener('change', () => selectRoute(routeBogBar, rendererBogBar))
+  routeBogMed.addEventListener('change', () => selectRoute(routeBogMed, rendererBogMed))
+  routeBogCuc.addEventListener('change', () => selectRoute(routeBogCuc, rendererBogCuc))
+  routeCalMed.addEventListener('change', () => selectRoute(routeCalMed, rendererCalMed))
+  routeBogLln.addEventListener('change', () => selectRoute(routeBogLln, rendererBogLln))
+
+  function updateRoute() {
+    selectRoute(routeBogBun, rendererBogBun)
+    selectRoute(routeMedCar, rendererMedCar)
+    selectRoute(routeBogBar, rendererBogBar)
+    selectRoute(routeBogMed, rendererBogMed)
+    selectRoute(routeBogCuc, rendererBogCuc)
+    selectRoute(routeCalMed, rendererCalMed)
+    selectRoute(routeBogLln, rendererBogLln)
+  }
+
+  pointParqueadero.addEventListener('change', () => updateRoute())
+  pointMontaña.addEventListener('change', () => updateRoute())
+
+
 }
+
