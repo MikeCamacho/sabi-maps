@@ -105,6 +105,78 @@ body {
 .floating-panel__options-content__option:hover {
   background-color: #f1f1f1;
 }
+.btn-see-all {
+  background: #0173c0;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 130%;
+  text-align: center;
+  color: #ffffff;
+  appearance: none;
+  width: 123.33px;
+  height: 26.31px;
+  border: none;
+}
+.is-center {
+  text-align: center;
+}
 .option-selects-hidden {
   display: none;
+}
+.floating-panel-points__options-content {
+  width: 180px;
+  float: right;
+  background: #fff;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  height: 0;
+  transition: height 0.3s linear;
+  overflow: hidden;
+  margin: -30px -30px 0 0;
+}
+.floating-panel-points__options-content.show {
+  height: auto;
+  padding: 40px 10px 15px;
+}
+.floating-panel-points__options-content__option {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 130%;
+  color: #0173c0;
+  cursor: pointer;
+}
+.floating-panel-points__options-content__option:hover label {
+  background-color: #f1f1f1;
+}
+label {
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  width: 75%;
+  margin-left: -13px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.has-icon-electric {
+  background: url('https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestoElectricos.svg')
+    no-repeat left center;
+}
+.has-icon-physical {
+  background: url('https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestosFisicos.svg')
+    no-repeat left center;
+}
+.has-icon-mixed {
+  background: url('https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestoMixtos.svg')
+    no-repeat left center;
+}
+[type='checkbox'] {
+  visibility: hidden;
+}
+[type='checkbox']:checked + label {
+  background-color: #f1f1f1;
+}
+.has-margin-top-20 {
+  margin-top: 20px;
 }

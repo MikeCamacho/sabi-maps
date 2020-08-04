@@ -30,7 +30,7 @@
         <div id="dropDownBtnPoints" class="floating-panel__buttons__button">
           <figure class="floating-panel__buttons__buttonFigure">
             <img
-              src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/07/icon01.svg"
+              src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestos.svg"
               alt="icon"
             />
           </figure>
@@ -67,7 +67,7 @@
         </div>
         <div
           id="routeBogBar"
-          checked='false'
+          checked="false"
           class="floating-panel__options-content__option"
           data-coord-origin="4.59808, -74.0760439"
           data-coord-destinity="3.89005264, -77.0737238"
@@ -120,37 +120,41 @@
           <span>Bogotá - Llanos Orientales</span>
           <span>(Yopal)</span>
         </div>
-        <div>
-          <button id="allRoutes">Mostrar Todos</button>
+        <div class="is-center">
+          <button class="btn-see-all" id="allRoutes">
+            Mostrar Todos
+          </button>
         </div>
       </div>
 
-
       <!--PANEL POINTS-->
-      <div id="dropDownPanelPoints" class="floating-panel__options-content">
-        <div
-          class="floating-panel__options-content__option"
-        >
-          <input id="electronic" type="checkbox" name="points" value="electronic">
-          <p>Puestos Electronicos</p>
-          <span></span>
+      <div
+        id="dropDownPanelPoints"
+        class="floating-panel-points__options-content"
+      >
+        <div class="floating-panel-points__options-content__option">
+          <input
+            id="electronic"
+            type="checkbox"
+            name="points"
+            value="electronic"
+          />
+          <label for="electronic" class="has-icon-electric"
+            >Puestos Electronicos</label
+          >
         </div>
-        <div
-          class="floating-panel__options-content__option"
-        >
-          <input id="physical" type="checkbox" name="points" value="physical">
-          <p>Puestos Fisicos</p>
-          <span></span>
+        <div class="floating-panel-points__options-content__option">
+          <input id="physical" type="checkbox" name="points" value="physical" />
+          <label for="physical" class="has-icon-physical"
+            >Puestos Fisicos</label
+          >
         </div>
-        <div
-          class="floating-panel__options-content__option"
-        >
-          <input id="mixed" type="checkbox" name="points" value="mixed">
-          <p>Puestos Mixtos</p>
-          <span></span>
+        <div class="floating-panel-points__options-content__option">
+          <input id="mixed" type="checkbox" name="points" value="mixed" />
+          <label for="mixed" class="has-icon-mixed">Puestos Mixtos</label>
         </div>
-        <div>
-          <button id="allPoints">Mostrar todos</button>
+        <div class="is-center has-margin-top-20">
+          <button class="btn-see-all" id="allPoints">Mostrar todos</button>
         </div>
       </div>
     </div>
