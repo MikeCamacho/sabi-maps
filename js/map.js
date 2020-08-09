@@ -148,11 +148,11 @@ function initMap() {
           })
           let icon
           if (point.value === 'electronic')
-            icon = '../icons/electronic.png'
+            icon = 'https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestoElectricos.svg'
           if (point.value === 'mixed')
-            icon = '../icons/mixed.png'
+            icon = 'https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestoMixtos.svg'
           if (point.value === 'physical')
-            icon = '../icons/physical.png'
+            icon = 'https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestosFisicos.svg'
           let marker = new google.maps.Marker({
             position: e,
             map,
