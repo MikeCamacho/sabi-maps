@@ -533,6 +533,9 @@ function initMap() {
   mixedPoint.addEventListener('click', function () {
     updateRoutes()
   })
+
+  buttonAllRoutes.click()
+  buttonAllPoints.click()
 }
 
 function checkRoute(origin, destination, waypoints, render, service, map) {
