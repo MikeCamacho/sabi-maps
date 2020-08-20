@@ -28,6 +28,8 @@ const electronicPoint = document.getElementById('electronic')
 const physicalPoint = document.getElementById('physical')
 const mixedPoint = document.getElementById('mixed')
 
+var icon_point = "../icons/icon-point-blue.png"
+
 const routesCoordinates = {
   bog_bun: { origin: { lat: 4.59808, lng: -74.0760439 }, destination: { lat: 3.89005264, lng: -77.0737238 } },
   med_car: { origin: { lat: 6.2443382, lng: -75.573553 }, destination: { lat: 10.4195841, lng: -75.5271224 } },
@@ -191,11 +193,13 @@ function initMap() {
       rendererBogBun.setMap(map)
       var markerStart = new google.maps.Marker({
         position: origin,
-        map
+        map,
+        icon: icon_point
       })
       var markerEnd = new google.maps.Marker({
         position: destination,
-        map
+        map,
+        icon: icon_point
       })
       markersBogBun.push(markerStart, markerEnd)
       var waypoints = selectedWaypoints('bog_bun', markersPointsBogBun)
@@ -232,11 +236,13 @@ function initMap() {
       const { origin, destination } = routesCoordinates['med_car']
       var markerStart = new google.maps.Marker({
         position: origin,
-        map
+        map,
+        icon: icon_point
       })
       var markerEnd = new google.maps.Marker({
         position: destination,
-        map
+        map,
+        icon: icon_point
       })
       markersMedCar.push(markerStart, markerEnd)
       var waypoints = selectedWaypoints('med_car', markersPointsMedCar)
@@ -274,11 +280,13 @@ function initMap() {
       const { origin, destination } = routesCoordinates['bog_bar']
       var markerStart = new google.maps.Marker({
         position: origin,
-        map
+        map,
+        icon: icon_point
       })
       var markerEnd = new google.maps.Marker({
         position: destination,
-        map
+        map,
+        icon: icon_point
       })
       markersBogBar.push(markerStart, markerEnd)
       var waypoints = selectedWaypoints('bog_bar', markersPointsBogBar)
@@ -316,11 +324,13 @@ function initMap() {
       const { origin, destination } = routesCoordinates['bog_med']
       var markerStart = new google.maps.Marker({
         position: origin,
-        map
+        map,
+        icon: icon_point
       })
       var markerEnd = new google.maps.Marker({
         position: destination,
-        map
+        map,
+        icon: icon_point
       })
       markersBogMed.push(markerStart, markerEnd)
       var waypoints = selectedWaypoints('bog_med', markersPointsBogMed)
@@ -358,11 +368,13 @@ function initMap() {
       const { origin, destination } = routesCoordinates['bog_cuc']
       var markerStart = new google.maps.Marker({
         position: origin,
-        map
+        map,
+        icon: icon_point
       })
       var markerEnd = new google.maps.Marker({
         position: destination,
-        map
+        map,
+        icon: icon_point
       })
       markersBogCuc.push(markerStart, markerEnd)
       var waypoints = selectedWaypoints('bog_cuc', markersPointsBogCuc)
@@ -400,11 +412,13 @@ function initMap() {
       const { origin, destination } = routesCoordinates['cal_med']
       var markerStart = new google.maps.Marker({
         position: origin,
-        map
+        map,
+        icon: icon_point
       })
       var markerEnd = new google.maps.Marker({
         position: destination,
-        map
+        map,
+        icon: icon_point
       })
       markersCalMed.push(markerStart, markerEnd)
       var waypoints = selectedWaypoints('cal_med', markersPointsCalMed)
@@ -442,11 +456,13 @@ function initMap() {
       const { origin, destination } = routesCoordinates['bog_lln']
       var markerStart = new google.maps.Marker({
         position: origin,
-        map
+        map,
+        icon: icon_point
       })
       var markerEnd = new google.maps.Marker({
         position: destination,
-        map
+        map,
+        icon: icon_point
       })
       markersBogLln.push(markerStart, markerEnd)
       var waypoints = selectedWaypoints('bog_lln', markersPointsBogLln)
