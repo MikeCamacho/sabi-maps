@@ -180,3 +180,14 @@ label {
 .has-margin-top-20 {
   margin-top: 20px;
 }
+
+.popup-marker {
+  width: 140px;
+  padding: 0px 5px;
+}
+.popup-marker p{
+  font-size: 10px;
+}
+.popup-marker h5{
+  margin-bottom: -8px;
+}

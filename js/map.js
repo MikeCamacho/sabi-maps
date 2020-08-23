@@ -12,501 +12,310 @@ dropDownBtnPoints.addEventListener('click', function () {
   dropDownPanelRoutes.classList.remove('show')
 })
 
-const routeBogBun = document.getElementById('routeBogBun')
-const routeMedCar = document.getElementById('routeMedCar')
-const routeBogBar = document.getElementById('routeBogBar')
 const routeBogMed = document.getElementById('routeBogMed')
-const routeBogCuc = document.getElementById('routeBogCuc')
+const routeManGua = document.getElementById('routeManGua')
+const routeMedCar = document.getElementById('routeMedCar')
 const routeCalMed = document.getElementById('routeCalMed')
-const routeBogLln = document.getElementById('routeBogLln')
-
-const buttonAllRoutes = document.getElementById('allRoutes')
-const buttonAllPoints = document.getElementById('allPoints')
+const routeBogCuc = document.getElementById('routeBogCuc')
+const routeBogAqui = document.getElementById('routeBogAqui')
+const routeCalPas = document.getElementById('routeCalPas')
+const routeBogBue = document.getElementById('routeBogBue')
+const routeBogBar = document.getElementById('routeBogBar')
 
 const points = document.getElementsByName('points')
 const electronicPoint = document.getElementById('electronic')
 const physicalPoint = document.getElementById('physical')
 const mixedPoint = document.getElementById('mixed')
 
+const buttonAllRoutes = document.getElementById('allRoutes')
+const buttonAllPoints = document.getElementById('allPoints')
+
 var icon_point = "https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-point-blue.png"
+var icon_mixed = "https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestoMixtos.svg"
+var icon_physical = "https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestosFisicos.svg"
+var icon_electronic = "https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestoElectricos.svg"
 
-const routesCoordinates = {
-  bog_bun: { origin: { lat: 4.59808, lng: -74.0760439 }, destination: { lat: 3.89005264, lng: -77.0737238 } },
-  med_car: { origin: { lat: 6.2443382, lng: -75.573553 }, destination: { lat: 10.4195841, lng: -75.5271224 } },
-  bog_bar: { origin: { lat: 4.59808, lng: -74.0760439 }, destination: { lat: 11.01184845, lng: -74.80886012 } },
-  bog_med: { origin: { lat: 4.59808, lng: -74.0760439 }, destination: { lat: 6.2443382, lng: -75.573553 } },
-  bog_cuc: { origin: { lat: 4.59808, lng: -74.0760439 }, destination: { lat: 7.8971458, lng: -72.5080387 } },
-  cal_med: { origin: { lat: 3.4108435, lng: -76.58121271 }, destination: { lat: 6.2443382, lng: -75.573553 } },
-  bog_lln: { origin: { lat: 4.59808, lng: -74.0760439 }, destination: { lat: 4.3120724, lng: -72.0829509 } }
-}
+var text_mixed = "Puesto de control Mixto"
+var text_physical = "Puesto de control Fisico"
+var text_electronic = "Puesto de control Electronico"
 
-const pointsCoordinates = {
-  electronic: {
-    bog_bun: [{ lat: 4.441265, lng: -74.687023 }, { lat: 3.887984, lng: -76.452030 }],
-    med_car: [{ lat: 9.175375, lng: -75.400853 }, { lat: 8.529448, lng: -75.521137 }],
-    bog_bar: [{ lat: 5.252074, lng: -73.851417 }],
-    bog_med: [{ lat: 6.013802, lng: -75.417333 }],
-    bog_cuc: [{ lat: 5.210830, lng: -73.898135 }, { lat: 5.963198, lng: -73.629186 }],
-    cal_med: [{ lat: 3.897677, lng: -76.378702 }],
-    bog_lln: [{ lat: 4.063768, lng: -73.436811 }, { lat: 4.346714, lng: -73.882641 }]
-  },
-  physical: {
-    bog_bun: [{ lat: 4.466940, lng: -75.814002 }, { lat: 4.534717, lng: -74.579784 }],
-    med_car: [{ lat: 6.850314, lng: -75.568205 }],
-    bog_bar: [{ lat: 6.543478, lng: -73.184398 }, { lat: 8.350420, lng: -73.613196 }],
-    bog_med: [{ lat: 5.550962, lng: -74.937586 }],
-    bog_cuc: [{ lat: 6.765066, lng: -72.720575 }],
-    cal_med: [{ lat: 4.882684, lng: -75.872077 }],
-    bog_lln: []
-  },
-  mixed: {
-    bog_bun: [{ lat: 4.326153, lng: -76.070260 }],
-    med_car: [{ lat: 6.699710, lng: -75.494988 }, { lat: 8.063699, lng: -75.359015 }],
-    bog_bar: [{ lat: 9.867522, lng: -74.625635 }, { lat: 9.268512, lng: -73.875239 }],
-    bog_med: [{ lat: 5.015351, lng: -74.319731 }, { lat: 5.550962, lng: -74.734057 }],
-    bog_cuc: [{ lat: 7.371009, lng: -72.713306 }, { lat: 7.710682, lng: -72.623083 }],
-    cal_med: [{ lat: 5.972072, lng: -75.851812 }],
-    bog_lln: [{ lat: 4.508350, lng: -73.953568 }]
-  }
-}
-
+const titleRoute = document.getElementById('titleRoute')
+const titlePoints = document.getElementById('titlePoints')
 
 function initMap() {
   var directionsService = new google.maps.DirectionsService()
   var directionsRenderer = new google.maps.DirectionsRenderer()
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 6.8,
-    center: {lat: 6.9920373, lng: -76.0535881},
+    center: { lat: 6.4920373, lng: -75.5535881 },
     zoomControl: true,
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: false,
   })
-  ', '
   directionsRenderer.setMap(map)
 
-  var rendererBogBun = new google.maps.DirectionsRenderer({ preserveViewport: true })
-  let markersBogBun = []
-  let markersPointsBogBun = { electronic: [], physical: [], mixed: [] }
-
-  var rendererMedCar = new google.maps.DirectionsRenderer({ preserveViewport: true })
-  let markersMedCar = []
-  let markersPointsMedCar = { electronic: [], physical: [], mixed: [] }
-
-  var rendererBogBar = new google.maps.DirectionsRenderer({ preserveViewport: true })
-  let markersBogBar = []
-  let markersPointsBogBar = { electronic: [], physical: [], mixed: [] }
-
-  var rendererBogMed = new google.maps.DirectionsRenderer({ preserveViewport: true })
-  let markersBogMed = []
-  let markersPointsBogMed = { electronic: [], physical: [], mixed: [] }
-
-  var rendererBogCuc = new google.maps.DirectionsRenderer({ preserveViewport: true })
-  let markersBogCuc = []
-  let markersPointsBogCuc = { electronic: [], physical: [], mixed: [] }
-
-  var rendererCalMed = new google.maps.DirectionsRenderer({ preserveViewport: true })
-  let markersCalMed = []
-  let markersPointsCalMed = { electronic: [], physical: [], mixed: [] }
-
-  var rendererBogLln = new google.maps.DirectionsRenderer({ preserveViewport: true })
-  let markersBogLln = []
-  let markersPointsBogLln = { electronic: [], physical: [], mixed: [] }
-
-  function setMapMarkers(map, markers) {
-    for (let index = 0; index < markers.length; index++) {
-      markers[index].setMap(map)
-    }
-  }
-
-  function setMapMarkersElectronics(map, markers) {
-    for (let index = 0; index < markers.electronic.length; index++) {
-      markers.electronic[index].setMap(map)
-    }
-  }
-
-  function setMapMarkersPhysical(map, markers) {
-    for (let index = 0; index < markers.physical.length; index++) {
-      markers.physical[index].setMap(map)
-    }
-  }
-
-  function setMapMarkersMixed(map, markers) {
-    for (let index = 0; index < markers.mixed.length; index++) {
-      markers.mixed[index].setMap(map)
-    }
-  }
-
-  function selectedWaypoints(route, markers) {
-    var waypoints = []
-    for (let i = 0; i < points.length; i++) {
-      const point = points[i]
-      if (point.checked) {
-        const array = pointsCoordinates[point.value][route]
-        array.forEach((e) => {
-          waypoints.push({
-            location: e,
-            stopover: true,
-          })
-          let icon
-          if (point.value === 'electronic')
-            icon = 'https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestoElectricos.svg'
-          if (point.value === 'mixed')
-            icon = 'https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestoMixtos.svg'
-          if (point.value === 'physical')
-            icon = 'https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestosFisicos.svg'
-          let marker = new google.maps.Marker({
-            position: e,
-            map,
-            icon,
-          })
-          markers[point.value].push(marker)
-        });
-      } else {
-        if (point.value === 'electronic'){
-          setMapMarkersElectronics(null, markers)
-        }
-        if (point.value === 'mixed'){
-          setMapMarkersMixed(null, markers)
-        }
-        if (point.value === 'physical'){
-          setMapMarkersPhysical(null, markers)
-        }
-      }
-    }
-    return waypoints
-  }
-
-  //ROUTE BOG-BUN
-  async function selectRouteBogBun(state, all) {
-    if (state) {
-      if (!all) {
-        selectRouteMedCar(false)
-        selectRouteBogBar(false)
-        selectRouteBogMed(false)
-        selectRouteBogCuc(false)
-        selectRouteCalMed(false)
-        selectRouteBogLln(false)
-      }
-      const { origin, destination } = routesCoordinates['bog_bun']
-      routeBogBun.setAttribute('checked', 'true')
-      rendererBogBun.setMap(map)
-      var markerStart = new google.maps.Marker({
-        position: origin,
-        map,
-        icon: icon_point
-      })
-      var markerEnd = new google.maps.Marker({
-        position: destination,
-        map,
-        icon: icon_point
-      })
-      markersBogBun.push(markerStart, markerEnd)
-      var waypoints = selectedWaypoints('bog_bun', markersPointsBogBun)
-      checkRoute(origin, destination, waypoints, rendererBogBun, directionsService)
-    } else {
-      routeBogBun.setAttribute('checked', 'false')
-      rendererBogBun.setOptions({
-        suppressPolylines: true,
-        suppressMarkers: true,
-      })
-      rendererBogBun.setMap(map)
-      setMapMarkers(null, markersBogBun)
-      setMapMarkersElectronics(null, markersPointsBogBun)
-      setMapMarkersMixed(null, markersPointsBogBun)
-      setMapMarkersPhysical(null, markersPointsBogBun)
-      markersBogBun = []
-      markersPointsBogBun = { electronic: [], physical: [], mixed: [] }
-    }
-  }
-  routeBogBun.addEventListener('click', () => selectRouteBogBun(true))
-
-  //ROUTE MED-CAR
-  function selectRouteMedCar(state, all) {
-    if (state) {
-      if (!all) {
-        selectRouteBogBun(false)
-        selectRouteBogBar(false)
-        selectRouteBogMed(false)
-        selectRouteBogCuc(false)
-        selectRouteCalMed(false)
-        selectRouteBogLln(false)
-      }
-      routeMedCar.setAttribute('checked', 'true')
-      const { origin, destination } = routesCoordinates['med_car']
-      var markerStart = new google.maps.Marker({
-        position: origin,
-        map,
-        icon: icon_point
-      })
-      var markerEnd = new google.maps.Marker({
-        position: destination,
-        map,
-        icon: icon_point
-      })
-      markersMedCar.push(markerStart, markerEnd)
-      var waypoints = selectedWaypoints('med_car', markersPointsMedCar)
-      checkRoute(origin, destination, waypoints, rendererMedCar, directionsService)
-      rendererMedCar.setMap(map)
-    } else {
-      routeMedCar.setAttribute('checked', 'false')
-      rendererMedCar.setOptions({
-        suppressPolylines: true,
-        suppressMarkers: true,
-      })
-      rendererMedCar.setMap(map)
-      setMapMarkers(null, markersMedCar)
-      setMapMarkersElectronics(null, markersPointsMedCar)
-      setMapMarkersMixed(null, markersPointsMedCar)
-      setMapMarkersPhysical(null, markersPointsMedCar)
-      markersMedCar = []
-      markersPointsMedCar = { electronic: [], physical: [], mixed: [] }
-    }
-  }
-  routeMedCar.addEventListener('click', () => selectRouteMedCar(true))
-
-  //ROUTE BOG-BAR
-  function selectRouteBogBar(state, all) {
-    if (state) {
-      if (!all) {
-        selectRouteBogBun(false)
-        selectRouteMedCar(false)
-        selectRouteBogMed(false)
-        selectRouteBogCuc(false)
-        selectRouteCalMed(false)
-        selectRouteBogLln(false)
-      }
-      routeBogBar.setAttribute('checked', 'true')
-      const { origin, destination } = routesCoordinates['bog_bar']
-      var markerStart = new google.maps.Marker({
-        position: origin,
-        map,
-        icon: icon_point
-      })
-      var markerEnd = new google.maps.Marker({
-        position: destination,
-        map,
-        icon: icon_point
-      })
-      markersBogBar.push(markerStart, markerEnd)
-      var waypoints = selectedWaypoints('bog_bar', markersPointsBogBar)
-      checkRoute(origin, destination, waypoints, rendererBogBar, directionsService, map)
-      rendererBogBar.setMap(map)
-    } else {
-      routeBogBar.setAttribute('checked', 'false')
-      rendererBogBar.setOptions({
-        suppressPolylines: true,
-        suppressMarkers: true,
-      })
-      rendererBogBar.setMap(map)
-      setMapMarkers(null, markersBogBar)
-      setMapMarkersElectronics(null, markersPointsBogBar)
-      setMapMarkersMixed(null, markersPointsBogBar)
-      setMapMarkersPhysical(null, markersPointsBogBar)
-      markersBogBar = []
-      markersPointsBogBar = { electronic: [], physical: [], mixed: [] }
-    }
-  }
-  routeBogBar.addEventListener('click', () => selectRouteBogBar(true))
-
   //ROUTE BOG-MED
-  function selectRouteBogMed(state, all) {
+  var rendererBogMed = new google.maps.DirectionsRenderer()
+  let markersBogMed = { points: [], electronic: [], physical: [], mixed: [] }
+  async function selectRouteBogMed(state, all) {
     if (state) {
       if (!all) {
-        selectRouteBogBun(false)
-        selectRouteMedCar(false)
+        selectRouteBogAqui(false)
         selectRouteBogBar(false)
+        selectRouteBogBue(false)
         selectRouteBogCuc(false)
+        selectRouteCalPas(false)
         selectRouteCalMed(false)
-        selectRouteBogLln(false)
+        selectRouteMedCar(false)
+        selectRouteManGua(false)
+        titleRoute.innerText = 'BOG - MED'
+        rendererBogMed.setOptions({ preserveViewport: false })
+      } else {
+        rendererBogMed.setOptions({ preserveViewport: true })
       }
-      routeBogMed.setAttribute('checked', 'true')
-      const { origin, destination } = routesCoordinates['bog_med']
-      var markerStart = new google.maps.Marker({
-        position: origin,
-        map,
-        icon: icon_point
-      })
-      var markerEnd = new google.maps.Marker({
-        position: destination,
-        map,
-        icon: icon_point
-      })
-      markersBogMed.push(markerStart, markerEnd)
-      var waypoints = selectedWaypoints('bog_med', markersPointsBogMed)
-      checkRoute(origin, destination, waypoints, rendererBogMed, directionsService, map)
-      rendererBogMed.setMap(map)
+      selectRoute('bog_med', routeBogMed, rendererBogMed, map, markersBogMed, directionsService)
     } else {
-      routeBogMed.setAttribute('checked', 'false')
-      rendererBogMed.setOptions({
-        suppressPolylines: true,
-        suppressMarkers: true,
-      })
-      rendererBogMed.setMap(map)
-      setMapMarkers(null, markersBogMed)
-      setMapMarkersElectronics(null, markersPointsBogMed)
-      setMapMarkersMixed(null, markersPointsBogMed)
-      setMapMarkersPhysical(null, markersPointsBogMed)
-      markersBogMed = []
-      markersPointsBogMed = { electronic: [], physical: [], mixed: [] }
+      deselectRoute(routeBogMed, rendererBogMed, map, markersBogMed)
     }
   }
   routeBogMed.addEventListener('click', () => selectRouteBogMed(true))
 
-  //ROUTE BOG-CUC
-  function selectRouteBogCuc(state, all) {
+  //ROUTE MAN-GUA
+  var rendererManGua = new google.maps.DirectionsRenderer()
+  let markersManGua = { points: [], electronic: [], physical: [], mixed: [] }
+  async function selectRouteManGua(state, all) {
     if (state) {
       if (!all) {
-        selectRouteBogBun(false)
-        selectRouteMedCar(false)
+        selectRouteBogAqui(false)
         selectRouteBogBar(false)
-        selectRouteBogMed(false)
+        selectRouteBogBue(false)
+        selectRouteBogCuc(false)
+        selectRouteCalPas(false)
         selectRouteCalMed(false)
-        selectRouteBogLln(false)
+        selectRouteMedCar(false)
+        selectRouteBogMed(false)
+        titleRoute.innerText = 'MAN - GUA'
+        rendererManGua.setOptions({ preserveViewport: false })
+      } else {
+        rendererManGua.setOptions({ preserveViewport: true })
       }
-      routeBogCuc.setAttribute('checked', 'true')
-      const { origin, destination } = routesCoordinates['bog_cuc']
-      var markerStart = new google.maps.Marker({
-        position: origin,
-        map,
-        icon: icon_point
-      })
-      var markerEnd = new google.maps.Marker({
-        position: destination,
-        map,
-        icon: icon_point
-      })
-      markersBogCuc.push(markerStart, markerEnd)
-      var waypoints = selectedWaypoints('bog_cuc', markersPointsBogCuc)
-      checkRoute(origin, destination, waypoints, rendererBogCuc, directionsService, map)
-      rendererBogCuc.setMap(map)
+      selectRoute('man_gua', routeManGua, rendererManGua, map, markersManGua, directionsService)
     } else {
-      routeBogCuc.setAttribute('checked', 'false')
-      rendererBogCuc.setOptions({
-        suppressPolylines: true,
-        suppressMarkers: true,
-      })
-      rendererBogCuc.setMap(map)
-      setMapMarkers(null, markersBogCuc)
-      setMapMarkersElectronics(null, markersPointsBogCuc)
-      setMapMarkersMixed(null, markersPointsBogCuc)
-      setMapMarkersPhysical(null, markersPointsBogCuc)
-      markersBogCuc = []
-      markersPointsBogCuc = { electronic: [], physical: [], mixed: [] }
+      deselectRoute(routeManGua, rendererManGua, map, markersManGua)
     }
   }
-  routeBogCuc.addEventListener('click', () => selectRouteBogCuc(true))
+  routeManGua.addEventListener('click', () => selectRouteManGua(true))
 
-  //ROUTE CAL-MED
-  function selectRouteCalMed(state, all) {
+  //ROUTE MED-CAR
+  var rendererMedCar = new google.maps.DirectionsRenderer()
+  let markersMedCar = { points: [], electronic: [], physical: [], mixed: [] }
+  async function selectRouteMedCar(state, all) {
     if (state) {
       if (!all) {
-        selectRouteBogBun(false)
-        selectRouteMedCar(false)
+        selectRouteBogAqui(false)
         selectRouteBogBar(false)
-        selectRouteBogMed(false)
+        selectRouteBogBue(false)
         selectRouteBogCuc(false)
-        selectRouteBogLln(false)
+        selectRouteCalPas(false)
+        selectRouteCalMed(false)
+        selectRouteManGua(false)
+        selectRouteBogMed(false)
+        titleRoute.innerText = 'MED - CAR'
+        rendererMedCar.setOptions({ preserveViewport: false })
+      } else {
+        rendererMedCar.setOptions({ preserveViewport: true })
       }
-      routeCalMed.setAttribute('checked', 'true')
-      const { origin, destination } = routesCoordinates['cal_med']
-      var markerStart = new google.maps.Marker({
-        position: origin,
-        map,
-        icon: icon_point
-      })
-      var markerEnd = new google.maps.Marker({
-        position: destination,
-        map,
-        icon: icon_point
-      })
-      markersCalMed.push(markerStart, markerEnd)
-      var waypoints = selectedWaypoints('cal_med', markersPointsCalMed)
-      checkRoute(origin, destination, waypoints, rendererCalMed, directionsService, map)
-      rendererCalMed.setMap(map)
+      selectRoute('med_car', routeMedCar, rendererMedCar, map, markersMedCar, directionsService)
     } else {
-      routeCalMed.setAttribute('checked', 'false')
-      rendererCalMed.setOptions({
-        suppressPolylines: true,
-        suppressMarkers: true,
-      })
-      rendererCalMed.setMap(map)
-      setMapMarkers(null, markersCalMed)
-      setMapMarkersElectronics(null, markersPointsCalMed)
-      setMapMarkersMixed(null, markersPointsCalMed)
-      setMapMarkersPhysical(null, markersPointsCalMed)
-      markersCalMed = []
-      markersPointsCalMed = { electronic: [], physical: [], mixed: [] }
+      deselectRoute(routeMedCar, rendererMedCar, map, markersMedCar)
+    }
+  }
+  routeMedCar.addEventListener('click', () => selectRouteMedCar(true))
+
+  //ROUTE CAL-Med
+  var rendererCalMed = new google.maps.DirectionsRenderer()
+  let markersCalMed = { points: [], electronic: [], physical: [], mixed: [] }
+  async function selectRouteCalMed(state, all) {
+    if (state) {
+      if (!all) {
+        selectRouteBogAqui(false)
+        selectRouteBogBar(false)
+        selectRouteBogBue(false)
+        selectRouteBogCuc(false)
+        selectRouteCalPas(false)
+        selectRouteManGua(false)
+        selectRouteMedCar(false)
+        selectRouteBogMed(false)
+        titleRoute.innerText = 'CAL - MED'
+        rendererCalMed.setOptions({ preserveViewport: false })
+      } else {
+        rendererCalMed.setOptions({ preserveViewport: true })
+      }
+      selectRoute('cal_med', routeCalMed, rendererCalMed, map, markersCalMed, directionsService)
+    } else {
+      deselectRoute(routeCalMed, rendererCalMed, map, markersCalMed)
     }
   }
   routeCalMed.addEventListener('click', () => selectRouteCalMed(true))
 
-  //ROUTE BOG-LLN
-  function selectRouteBogLln(state, all) {
+  //ROUTE BOG-CUC
+  var rendererBogCuc = new google.maps.DirectionsRenderer()
+  let markersBogCuc = { points: [], electronic: [], physical: [], mixed: [] }
+  async function selectRouteBogCuc(state, all) {
     if (state) {
       if (!all) {
-        selectRouteBogBun(false)
-        selectRouteMedCar(false)
+        selectRouteBogAqui(false)
         selectRouteBogBar(false)
-        selectRouteBogMed(false)
-        selectRouteBogCuc(false)
+        selectRouteBogBue(false)
+        selectRouteCalPas(false)
         selectRouteCalMed(false)
+        selectRouteManGua(false)
+        selectRouteMedCar(false)
+        selectRouteBogMed(false)
+        titleRoute.innerText = 'BOG - CUC'
+        rendererBogCuc.setOptions({ preserveViewport: false })
+      } else {
+        rendererBogCuc.setOptions({ preserveViewport: true })
       }
-      routeBogLln.setAttribute('checked', 'true')
-      const { origin, destination } = routesCoordinates['bog_lln']
-      var markerStart = new google.maps.Marker({
-        position: origin,
-        map,
-        icon: icon_point
-      })
-      var markerEnd = new google.maps.Marker({
-        position: destination,
-        map,
-        icon: icon_point
-      })
-      markersBogLln.push(markerStart, markerEnd)
-      var waypoints = selectedWaypoints('bog_lln', markersPointsBogLln)
-      checkRoute(origin, destination, waypoints, rendererBogLln, directionsService, map)
-      rendererBogLln.setMap(map)
+      selectRoute('bog_cuc', routeBogCuc, rendererBogCuc, map, markersBogCuc, directionsService)
     } else {
-      routeBogLln.setAttribute('checked', 'false')
-      rendererBogLln.setOptions({
-        suppressPolylines: true,
-        suppressMarkers: true,
-      })
-      rendererBogLln.setMap(map)
-      setMapMarkers(null, markersBogLln)
-      setMapMarkersElectronics(null, markersPointsBogLln)
-      setMapMarkersMixed(null, markersPointsBogLln)
-      setMapMarkersPhysical(null, markersPointsBogLln)
-      markersBogLln = []
-      markersPointsBogLln = { electronic: [], physical: [], mixed: [] }
+      deselectRoute(routeBogCuc, rendererBogCuc, map, markersBogCuc)
     }
   }
-  routeBogLln.addEventListener('click', () => selectRouteBogLln(true))
+  routeBogCuc.addEventListener('click', () => selectRouteBogCuc(true))
 
+  //ROUTE BOG-AQUI
+  var rendererBogAqui = new google.maps.DirectionsRenderer()
+  let markersBogAqui = { points: [], electronic: [], physical: [], mixed: [] }
+  async function selectRouteBogAqui(state, all) {
+    if (state) {
+      if (!all) {
+        selectRouteBogBar(false)
+        selectRouteBogBue(false)
+        selectRouteBogCuc(false)
+        selectRouteCalPas(false)
+        selectRouteCalMed(false)
+        selectRouteManGua(false)
+        selectRouteMedCar(false)
+        selectRouteBogMed(false)
+        titleRoute.innerText = 'BOG - AQUI'
+        rendererBogAqui.setOptions({ preserveViewport: false })
+      } else {
+        rendererBogAqui.setOptions({ preserveViewport: true })
+      }
+      selectRoute('bog_aqui', routeBogAqui, rendererBogAqui, map, markersBogAqui, directionsService)
+    } else {
+      deselectRoute(routeBogAqui, rendererBogAqui, map, markersBogAqui)
+    }
+  }
+  routeBogAqui.addEventListener('click', () => selectRouteBogAqui(true))
+
+  //ROUTE CAL-PAS
+  var rendererCalPas = new google.maps.DirectionsRenderer()
+  let markersCalPas = { points: [], electronic: [], physical: [], mixed: [] }
+  async function selectRouteCalPas(state, all) {
+    if (state) {
+      if (!all) {
+        selectRouteBogAqui(false)
+        selectRouteBogBar(false)
+        selectRouteBogBue(false)
+        selectRouteBogCuc(false)
+        selectRouteCalMed(false)
+        selectRouteManGua(false)
+        selectRouteMedCar(false)
+        selectRouteBogMed(false)
+        titleRoute.innerText = 'CAL - PAS'
+        rendererCalPas.setOptions({ preserveViewport: false })
+      } else {
+        rendererCalPas.setOptions({ preserveViewport: true })
+      }
+      selectRoute('cal_pas', routeCalPas, rendererCalPas, map, markersCalPas, directionsService)
+    } else {
+      deselectRoute(routeCalPas, rendererCalPas, map, markersCalPas)
+    }
+  }
+  routeCalPas.addEventListener('click', () => selectRouteCalPas(true))
+
+  //ROUTE BOG-BUE
+  var rendererBogBue = new google.maps.DirectionsRenderer()
+  let markersBogBue = { points: [], electronic: [], physical: [], mixed: [] }
+  async function selectRouteBogBue(state, all) {
+    if (state) {
+      if (!all) {
+        selectRouteBogAqui(false)
+        selectRouteBogBar(false)
+        selectRouteBogCuc(false)
+        selectRouteCalPas(false)
+        selectRouteCalMed(false)
+        selectRouteManGua(false)
+        selectRouteMedCar(false)
+        selectRouteBogMed(false)
+        titleRoute.innerText = 'BOG - BUE'
+        rendererBogBue.setOptions({ preserveViewport: false })
+      } else {
+        rendererBogBue.setOptions({ preserveViewport: true })
+      }
+      selectRoute('bog_bue', routeBogBue, rendererBogBue, map, markersBogBue, directionsService)
+    } else {
+      deselectRoute(routeBogBue, rendererBogBue, map, markersBogBue)
+    }
+  }
+  routeBogBue.addEventListener('click', () => selectRouteBogBue(true))
+
+  //ROUTE BOG-BAR
+  var rendererBogBar = new google.maps.DirectionsRenderer()
+  let markersBogBar = { points: [], electronic: [], physical: [], mixed: [] }
+  async function selectRouteBogBar(state, all) {
+    if (state) {
+      if (!all) {
+        selectRouteBogAqui(false)
+        selectRouteBogBue(false)
+        selectRouteBogCuc(false)
+        selectRouteCalPas(false)
+        selectRouteCalMed(false)
+        selectRouteManGua(false)
+        selectRouteMedCar(false)
+        selectRouteBogMed(false)
+        titleRoute.innerText = 'BOG - BAR'
+        rendererBogBar.setOptions({ preserveViewport: false })
+      } else {
+        rendererBogBar.setOptions({ preserveViewport: true })
+      }
+      selectRoute('bog_bar', routeBogBar, rendererBogBar, map, markersBogBar, directionsService)
+    } else {
+      deselectRoute(routeBogBar, rendererBogBar, map, markersBogBar)
+    }
+  }
+  routeBogBar.addEventListener('click', () => selectRouteBogBar(true))
+
+  //ALL ROUTES AND POINTS
   function allRoutes() {
     setTimeout(() => {
-      selectRouteBogBar(true, true)
-    }, 1500)
-    setTimeout(() => {
-      selectRouteBogBun(true, true)
-    }, 1500)
-    setTimeout(() => {
-      selectRouteBogCuc(true, true)
-    }, 1500)
-    setTimeout(() => {
-      selectRouteBogLln(true, true)
-    }, 1500)
-    setTimeout(() => {
-      selectRouteBogMed(true, true)
-    }, 1500)
-    setTimeout(() => {
-      selectRouteCalMed(true, true)
-    }, 1500)
+      selectRouteManGua(true, true)
+    }, 1300)
     setTimeout(() => {
       selectRouteMedCar(true, true)
-    }, 1500)
+    }, 1300)
+    setTimeout(() => {
+      selectRouteCalMed(true, true)
+    }, 1300)
+    setTimeout(() => {
+      selectRouteBogCuc(true, true)
+    }, 1300)
+    setTimeout(() => {
+      selectRouteBogAqui(true, true)
+    }, 1300)
+    setTimeout(() => {
+      selectRouteCalPas(true, true)
+    }, 1300)
+    setTimeout(() => {
+      selectRouteBogBue(true, true)
+    }, 1300)
+    setTimeout(() => {
+      selectRouteBogBar(true, true)
+    }, 1300)
+    titleRoute.innerText = 'TODOS'
+    map.setOptions({ zoom: 6.6, center: { lat: 6.4920373, lng: -75.5535881 } })
   }
   buttonAllRoutes.addEventListener('click', () => allRoutes())
 
@@ -514,44 +323,126 @@ function initMap() {
     electronicPoint.checked = true
     physicalPoint.checked = true
     mixedPoint.checked = true
+    //titlePoints.innerText = 'TODOS'
     updateRoutes()
   }
   buttonAllPoints.addEventListener('click', () => allPoints())
 
   function updateRoutes() {
     if (
-      routeBogBar.getAttribute('checked') === 'true' &&
-      routeBogBun.getAttribute('checked') === 'true' &&
-      routeBogCuc.getAttribute('checked') === 'true' &&
-      routeBogLln.getAttribute('checked') === 'true' &&
-      routeBogMed.getAttribute('checked') === 'true' &&
+      routeManGua.getAttribute('checked') === 'true' &&
+      routeMedCar.getAttribute('checked') === 'true' &&
       routeCalMed.getAttribute('checked') === 'true' &&
-      routeMedCar.getAttribute('checked') === 'true'
+      routeBogCuc.getAttribute('checked') === 'true' &&
+      routeBogAqui.getAttribute('checked') === 'true' &&
+      routeCalPas.getAttribute('checked') === 'true' &&
+      routeBogBue.getAttribute('checked') === 'true' &&
+      routeBogBar.getAttribute('checked') === 'true'
     ) {
       allRoutes()
     } else {
-      if (routeBogBar.getAttribute('checked') == 'true') selectRouteBogBar(true)
-      if (routeBogBun.getAttribute('checked') == 'true') selectRouteBogBun(true)
-      if (routeBogCuc.getAttribute('checked') == 'true') selectRouteBogCuc(true)
-      if (routeBogLln.getAttribute('checked') == 'true') selectRouteBogLln(true)
-      if (routeBogMed.getAttribute('checked') == 'true') selectRouteBogMed(true)
-      if (routeCalMed.getAttribute('checked') == 'true') selectRouteCalMed(true)
-      if (routeMedCar.getAttribute('checked') == 'true') selectRouteMedCar(true)
+      if (routeManGua.getAttribute('checked') === 'true') selectRouteManGua(true)
+      if (routeMedCar.getAttribute('checked') === 'true') selectRouteMedCar(true)
+      if (routeCalMed.getAttribute('checked') === 'true') selectRouteCalMed(true)
+      if (routeBogCuc.getAttribute('checked') === 'true') selectRouteBogCuc(true)
+      if (routeBogAqui.getAttribute('checked') === 'true') selectRouteBogAqui(true)
+      if (routeCalPas.getAttribute('checked') === 'true') selectRouteCalPas(true)
+      if (routeBogBue.getAttribute('checked') === 'true') selectRouteBogBue(true)
+      if (routeBogBar.getAttribute('checked') === 'true') selectRouteBogBar(true)
     }
   }
 
-  electronicPoint.addEventListener('click', function () {
-    updateRoutes()
-  })
-  physicalPoint.addEventListener('click', function () {
-    updateRoutes()
-  })
-  mixedPoint.addEventListener('click', function () {
-    updateRoutes()
-  })
+  electronicPoint.addEventListener('click', function () { updateRoutes() })
+  physicalPoint.addEventListener('click', function () { updateRoutes() })
+  mixedPoint.addEventListener('click', function () { updateRoutes() })
 
+  //INIT ALL ROUTES AND ALL POINTS
   buttonAllRoutes.click()
   buttonAllPoints.click()
+}
+
+function setMarkersPoints(map, markers, points) {
+  const object = markers
+  if (points) {
+    const arrayPoints = eval("object." + points)
+    for (let index = 0; index < arrayPoints.length; index++) {
+      arrayPoints[index].setMap(map)
+    }
+  } else {
+    Object.keys(object).map(key => {
+      for (let index = 0; index < object[key].length; index++) {
+        object[key][index].setMap(map)
+      }
+      object[key] = []
+    })
+  }
+}
+
+function selectedWaypoints(route, markers, map) {
+  var waypoints = []
+  for (let i = 0; i < points.length; i++) {
+    const point = points[i]
+    if (point.checked) {
+      const array = routes[route].points[point.value]
+      array.forEach((item) => {
+        waypoints.push({
+          location: item.position,
+          stopover: true,
+        })
+        if (item.name) {
+          var content = '<div class="popup-marker" id="content">' +
+            `<h5>${item.name}</h5>` +
+            `<p>${eval('text_' + point.value)}</p>` +
+            `<p>${item.ubication}</p>` +
+            '</div>'
+
+          var info = new google.maps.InfoWindow({
+            content
+          })
+          let icon = eval('icon_' + point.value)
+          let marker = new google.maps.Marker({
+            position: item.position,
+            map,
+            icon,
+            title: item.name
+          })
+          markers[point.value].push(marker)
+          marker.addListener('click', function () {
+            info.open(map, marker);
+          });
+        }
+      });
+    } else {
+      setMarkersPoints(null, markers, point.value)
+    }
+  }
+  return waypoints
+}
+
+function deselectRoute(route, render, map, markers) {
+  route.setAttribute('checked', 'false')
+  render.setOptions({ suppressPolylines: true, suppressMarkers: true })
+  setMarkersPoints(null, markers)
+  render.setMap(map)
+}
+
+function selectRoute(name_route, route, render, map, markers, service) {
+  route.setAttribute('checked', 'true')
+  const { origin, destination } = routes[name_route]
+  var markerStart = new google.maps.Marker({
+    position: origin,
+    map,
+    icon: icon_point
+  })
+  var markerEnd = new google.maps.Marker({
+    position: destination,
+    map,
+    icon: icon_point
+  })
+  markers['points'].push(markerStart, markerEnd)
+  var waypoints = selectedWaypoints(name_route, markers, map)
+  checkRoute(origin, destination, waypoints, render, service)
+  render.setMap(map)
 }
 
 function checkRoute(origin, destination, waypoints, render, service, map) {

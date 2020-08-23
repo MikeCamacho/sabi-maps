@@ -1,165 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/estilos.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Sabi | Mapa Interactivo</title>
-  </head>
-  <body>
-    <div id="floating-panel">
-      <div class="floating-panel__buttons">
-        <!--BUTTON ROUTES-->
-        <div id="dropDownBtnRoutes" class="floating-panel__buttons__button">
-          <figure class="floating-panel__buttons__buttonFigure">
-            <img
-              src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/07/icon01.svg"
-              alt="icon"
-            />
-          </figure>
-          <div class="floating-panel__buttons__buttonTxt">
-            <p>Mostrar TODOS</p>
-            <span>los corredores</span>
-          </div>
-        </div>
-        <!--BUTTON POINTS-->
-        <div id="dropDownBtnPoints" class="floating-panel__buttons__button">
-          <figure class="floating-panel__buttons__buttonFigure">
-            <img
-              src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestos.svg"
-              alt="icon"
-            />
-          </figure>
-          <div class="floating-panel__buttons__buttonTxt">
-            <p>Mostrar TODOS</p>
-            <span>los puntos de control</span>
-          </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <title>Sabi | Mapa Interactivo</title>
+</head>
+
+<body>
+  <div id="floating-panel">
+    <div class="floating-panel__buttons">
+      <!--BUTTON ROUTES-->
+      <div id="dropDownBtnRoutes" class="floating-panel__buttons__button">
+        <figure class="floating-panel__buttons__buttonFigure">
+          <img src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/07/icon01.svg" alt="icon" />
+        </figure>
+        <div class="floating-panel__buttons__buttonTxt">
+          <span>
+            <p>Mostrar</p>
+            <p id="titleRoute"></p>
+          </span>
+          <span>corredores</span>
         </div>
       </div>
-
-      <!--PANEL ROUTES-->
-      <div id="dropDownPanelRoutes" class="floating-panel__options-content">
-        <div
-          id="routeBogBun"
-          checked="false"
-          class="floating-panel__options-content__option"
-          data-coord-origin="4.59808, -74.0760439"
-          data-coord-destinity="3.89005264, -77.0737238"
-        >
-          <p>BOG - BUN</p>
-          <span>Bogotá - Buenaventura</span>
-          <span>Cali (Línea)</span>
-        </div>
-        <div
-          id="routeMedCar"
-          checked="false"
-          class="floating-panel__options-content__option"
-          data-coord-origin="4.59808, -74.0760439"
-          data-coord-destinity="3.89005264, -77.0737238"
-        >
-          <p>MED - CAR</p>
-          <span>Medellin - Cartagena</span>
-          <span>(Cartagena)</span>
-        </div>
-        <div
-          id="routeBogBar"
-          checked="false"
-          class="floating-panel__options-content__option"
-          data-coord-origin="4.59808, -74.0760439"
-          data-coord-destinity="3.89005264, -77.0737238"
-        >
-          <p>BOG - BAR</p>
-          <span>Bogotá - La costa</span>
-          <span>(Barranquilla)</span>
-        </div>
-        <div
-          id="routeBogMed"
-          checked="false"
-          class="floating-panel__options-content__option"
-          data-coord-origin="4.59808, -74.0760439"
-          data-coord-destinity="3.89005264, -77.0737238"
-        >
-          <p>BOG - MED</p>
-          <span>Bogotá - Medellín</span>
-          <span></span>
-        </div>
-        <div
-          id="routeBogCuc"
-          checked="false"
-          class="floating-panel__options-content__option"
-          data-coord-origin="4.59808, -74.0760439"
-          data-coord-destinity="3.89005264, -77.0737238"
-        >
-          <p>BOG - CUC</p>
-          <span>Bogotá - Cúcuta</span>
-          <span></span>
-        </div>
-        <div
-          id="routeCalMed"
-          checked="false"
-          class="floating-panel__options-content__option"
-          data-coord-origin="4.59808, -74.0760439"
-          data-coord-destinity="3.89005264, -77.0737238"
-        >
-          <p>CAL - MED</p>
-          <span>Cali - Medellín</span>
-          <span></span>
-        </div>
-        <div
-          id="routeBogLln"
-          checked="false"
-          class="floating-panel__options-content__option"
-          data-coord-origin="4.59808, -74.0760439"
-          data-coord-destinity="3.89005264, -77.0737238"
-        >
-          <p>BOG - LLN</p>
-          <span>Bogotá - Llanos Orientales</span>
-          <span>(Yopal)</span>
-        </div>
-        <div class="is-center">
-          <button class="btn-see-all" id="allRoutes">
-            Mostrar Todos
-          </button>
-        </div>
-      </div>
-
-      <!--PANEL POINTS-->
-      <div
-        id="dropDownPanelPoints"
-        class="floating-panel-points__options-content"
-      >
-        <div class="floating-panel-points__options-content__option">
-          <input
-            id="electronic"
-            type="checkbox"
-            name="points"
-            value="electronic"
-          />
-          <label for="electronic" class="has-icon-electric"
-            >Puestos Electronicos</label
-          >
-        </div>
-        <div class="floating-panel-points__options-content__option">
-          <input id="physical" type="checkbox" name="points" value="physical" />
-          <label for="physical" class="has-icon-physical"
-            >Puestos Fisicos</label
-          >
-        </div>
-        <div class="floating-panel-points__options-content__option">
-          <input id="mixed" type="checkbox" name="points" value="mixed" />
-          <label for="mixed" class="has-icon-mixed">Puestos Mixtos</label>
-        </div>
-        <div class="is-center has-margin-top-20">
-          <button class="btn-see-all" id="allPoints">Mostrar todos</button>
+      <!--BUTTON POINTS-->
+      <div id="dropDownBtnPoints" class="floating-panel__buttons__button">
+        <figure class="floating-panel__buttons__buttonFigure">
+          <img src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-puestos.svg" alt="icon" />
+        </figure>
+        <div class="floating-panel__buttons__buttonTxt">
+          <span>
+            <p>Mostrar</p>
+            <p id="titlePoints"></p>
+          </span>
+          <span>puntos de control</span>
         </div>
       </div>
     </div>
-    <div id="map"></div>
-    <script src="js/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZbKGgQzQ1BdcJUuvFvJedx_r9-LjO1ns&callback=initMap"></script>
-  </body>
+
+    <!--PANEL ROUTES-->
+    <div id="dropDownPanelRoutes" class="floating-panel__options-content">
+
+      <div id="routeBogMed" checked="false" class="floating-panel__options-content__option">
+        <p>BOG - MED</p>
+        <span>Bogota - Medellin, Antioquia</span>
+      </div>
+
+      <div id="routeManGua" checked="false" class="floating-panel__options-content__option">
+        <p>MAN - GUA</p>
+        <span>Manizalez, Caldas - Guaduas, Cundinamarca</span>
+      </div>
+
+      <div id="routeMedCar" checked="false" class="floating-panel__options-content__option">
+        <p>MED - CAR</p>
+        <span>Medellín, Antioquia - Cartagena, Bolívar</span>
+      </div>
+
+      <div id="routeCalMed" checked="false" class="floating-panel__options-content__option">
+        <p>CAL - MED</p>
+        <span>Cali, Valle del Cauca - Medellin, Antioquia</span>
+      </div>
+
+      <div id="routeBogCuc" checked="false" class="floating-panel__options-content__option">
+        <p>BOG - CUC</p>
+        <span>Bogotá - Cúcuta, Norte de Santander</span>
+      </div>
+
+      <div id="routeBogAqui" checked="false" class="floating-panel__options-content__option">
+        <p>BOG - AQUI</p>
+        <span>Bogotá - Pc Toquilla, Aquitania</span>
+        <span>(Aquitania, Cundinamarca)</span>
+      </div>
+
+      <div id="routeCalPas" checked="false" class="floating-panel__options-content__option">
+        <p>CAL - PAS</p>
+        <span>Cali, Valle del Cauca - Pasto, Nariño</span>
+      </div>
+
+      <div id="routeBogBue" checked="false" class="floating-panel__options-content__option">
+        <p>BOG - BUE</p>
+        <span>Bogotá - Buenaventura, Valle del Cauca</span>
+      </div>
+
+      <div id="routeBogBar" checked="false" class="floating-panel__options-content__option">
+        <p>BOG - BAR</p>
+        <span>Bogotá - Barranquilla, Atlantico</span>
+        <span>(La costa)</span>
+      </div>
+
+      <div class="is-center">
+        <button class="btn-see-all" id="allRoutes">
+          Mostrar Todos
+        </button>
+      </div>
+
+    </div>
+
+    <!--PANEL POINTS-->
+    <div id="dropDownPanelPoints" class="floating-panel-points__options-content">
+      <div class="floating-panel-points__options-content__option">
+        <input id="electronic" type="checkbox" name="points" value="electronic" />
+        <label for="electronic" class="has-icon-electric">Puestos Electronicos</label>
+      </div>
+      <div class="floating-panel-points__options-content__option">
+        <input id="physical" type="checkbox" name="points" value="physical" />
+        <label for="physical" class="has-icon-physical">Puestos Fisicos</label>
+      </div>
+      <div class="floating-panel-points__options-content__option">
+        <input id="mixed" type="checkbox" name="points" value="mixed" />
+        <label for="mixed" class="has-icon-mixed">Puestos Mixtos</label>
+      </div>
+      <div class="is-center has-margin-top-20">
+        <button class="btn-see-all" id="allPoints">Mostrar todos</button>
+      </div>
+    </div>
+  </div>
+  <div id="map"></div>
+  <script src="js/data.js"></script>
+  <script src="js/map.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZbKGgQzQ1BdcJUuvFvJedx_r9-LjO1ns&callback=initMap"></script>
+</body>
+
 </html>
