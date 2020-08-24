@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <title>Sabi | Segundo Mapa Interactivo</title>
+</head>
+
+<body>
+  <div id="floating-panel">
+    <div class="floating-panel__buttons">
+      <!--BUTTON ROUTES-->
+      <div id="dropDownBtnZones" class="floating-panel__buttons__button">
+        <figure class="floating-panel__buttons__buttonFigure">
+          <img src="https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/07/icon01.svg" alt="icon" />
+        </figure>
+        <div class="floating-panel__buttons__buttonTxt">
+          <span>
+            <p>Mostrar</p>
+            <p id="titleZone"></p>
+          </span>
+          <span>Zonas</span>
+        </div>
+      </div>
+    </div>
+
+    <!--PANEL ROUTES-->
+    <div id="dropDownPanelZones" class="floating-panel__options-content">
+
+      <div id="zoneEast" checked="false" class="floating-panel__options-content__option">
+        <p>Zona 1 - Llanos</p>
+        <span>Llanos (Meta y Casanare)</span>
+      </div>
+
+      <div id="zoneCenter" checked="false" class="floating-panel__options-content__option">
+        <p>Zona 2 - Centro</p>
+        <span>Cundinamarca y Boyacá</span>
+      </div>
+
+      <div id="zoneNort" checked="false" class="floating-panel__options-content__option">
+        <p>Zona 3 - Norte</p>
+        <span>Santander - Magdalena - Atlántico y Bolivar</span>
+      </div>
+
+      <div id="zoneSouth" checked="false" class="floating-panel__options-content__option">
+        <p>Zona 4 - Sur</p>
+        <span>Huila - Tolima</span>
+      </div>
+
+      <div class="is-center">
+        <button class="btn-see-all" id="allZones">
+          Mostrar Todos
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <div id="map"></div>
+  <script src="js/second_data.js"></script>
+  <script src="js/second_map.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZbKGgQzQ1BdcJUuvFvJedx_r9-LjO1ns&callback=initMap"></script>
+</body>
+
+</html>
