@@ -18,6 +18,10 @@ var icon_type1 = "https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/
 var icon_type2 = "https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-2.png"
 var icon_matpel = "https://clientes.mi-martinez.com/sabi/wp-content/uploads/2020/08/icon-3.png"
 
+var text_type1 = "PAE Tipo 1"
+var text_type2 = "PAE Tipo 2"
+var text_matpel = "PAE Matpel"
+
 const titleZone = document.getElementById('titleZone')
 
 function initMap() {
@@ -70,7 +74,7 @@ function initMap() {
         selectZoneEast(false)
         selectZoneNort(false)
         selectZoneSouth(false)
-        titleZone.innerText = 'Zona 2 - Center'
+        titleZone.innerText = 'Zona 2 - Centro'
         rendererCenter.setOptions({ preserveViewport: false })
       } else {
         rendererCenter.setOptions({ preserveViewport: true })
@@ -187,15 +191,28 @@ function selectedWaypoints(zone, markers, map) {
     const array = zones[zone].points[key]
     array.forEach(item => {
       waypoints.push({
-        location: item,
+        location: key === 'cities' ? item : item.position,
         stopover: true
       })
       let icon = eval('icon_' + key)
       let marker = new google.maps.Marker({
-        position: item,
+        position: key === 'cities' ? item : item.position,
         map,
         icon,
       })
+      if (key !== 'cities') {
+        var content = '<div class="popup-marker" id="content">' +
+          `<h5>${item.name}</h5>` +
+          `<p>${eval('text_' + key)}</p>` +
+          '</div>'
+
+        var info = new google.maps.InfoWindow({
+          content
+        })
+        marker.addListener('click', function () {
+          info.open(map, marker);
+        });
+      }
       markers[key].push(marker)
     })
   })

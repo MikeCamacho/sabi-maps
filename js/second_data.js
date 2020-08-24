@@ -15,13 +15,28 @@ const zones = {
         { lat: 5.0114703, lng: -72.750982 }//tauramena
       ],
       type1: [
-        { lat: 5.16869, lng: -72.54503 },
-        { lat: 4.20383, lng: -73.71635 }
+        {
+          name: 'Aguazul',
+          position: { lat: 5.16869, lng: -72.54503 }
+        },
+        {
+          name: 'Pipiral',
+          position: { lat: 4.20383, lng: -73.71635 }
+        }
       ],
       type2: [
-        { lat: 4.619142, lng: -72.925438 },
-        { lat: 4.4419322, lng: -74.0488241 },
-        { lat: 4.31483, lng: -72.09992 }
+        {
+          name: 'Monterrey',
+          position: { lat: 4.619142, lng: -72.925438 }
+        },
+        {
+          name: 'Chipaque',
+          position: { lat: 4.4419322, lng: -74.0488241 }
+        },
+        {
+          name: 'Puerto Gaitan',
+          position: { lat: 4.31483, lng: -72.09992 }
+        }
       ],
       matpel: []
     }
@@ -43,15 +58,30 @@ const zones = {
         { lat: 4.7329912, lng: -74.2651858 },//Madrid
       ],
       type1: [
-        { lat: 5.07723, lng: -74.60063 }
+        {
+          name: 'Guaduas',
+          position: { lat: 5.07723, lng: -74.60063 }
+        }
       ],
       type2: [
-        { lat: 7.12140, lng: -73.59613 },
-        { lat: 5.93852, lng: -74.57107 },
-        { lat: 4.877034, lng: -74.438353 }
+        {
+          name: 'Lizama',
+          position: { lat: 7.12140, lng: -73.59613 }
+        },
+        {
+          name: 'Puerto Boyaca',
+          position: { lat: 5.93852, lng: -74.57107 }
+        },
+        {
+          name: 'Jalisco',
+          position: { lat: 4.877034, lng: -74.438353 }
+        }
       ],
       matpel: [
-        { lat: 4.7064627, lng: -74.2432617 }
+        {
+          name: 'Mosquera',
+          position: { lat: 4.7064627, lng: -74.2432617 }
+        }
       ]
     }
   },
@@ -74,14 +104,26 @@ const zones = {
         { lat: 10.6384052, lng: -74.9266825 },//Sabanalarga
       ],
       type1: [
-        { lat: 9.977575, lng: -73.88730 }
+        {
+          name: 'Bosconia',
+          position: { lat: 9.977575, lng: -73.88730 }
+        }
       ],
       type2: [
-        { lat: 8.310301, lng: -73.622421 },
-        { lat: 11.0091387, lng: -74.2808352 }
+        {
+          name: 'Aguachica',
+          position: { lat: 8.310301, lng: -73.622421 }
+        },
+        {
+          name: 'Cienaga',
+          position: { lat: 11.0091387, lng: -74.2808352 }
+        }
       ],
       matpel: [
-        { lat: 9.7176884, lng: -75.1408309 }
+        {
+          name: 'Carmen del Bolivar',
+          position: { lat: 9.7176884, lng: -75.1408309 }
+        }
       ]
     }
   },
@@ -104,13 +146,22 @@ const zones = {
         { lat: 3.3952332, lng: -76.5958754 },//Cali
       ],
       type1: [
-        { lat: 4.4046853, lng: -75.181892 }
+        {
+          name: 'Ibagué',
+          position: { lat: 4.4046853, lng: -75.181892 }
+        }
       ],
       type2: [
-        { lat: 2.3845279, lng: -75.5548267 }
+        {
+          name: 'Gigante',
+          position: { lat: 2.3845279, lng: -75.5548267 }
+        }
       ],
       matpel: [
-        { lat: 3.5320986, lng: -76.3305307 }
+        {
+          name: 'Valle',
+          position: { lat: 3.5320986, lng: -76.3305307 }
+        }
       ]
     }
   }
